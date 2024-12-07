@@ -20,6 +20,13 @@
     }
   },
   plugins: [
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: 'mb545k59khby',
+        accessToken: 'Yr2wKSmpwNVesJ5t1-hOCg16jvG7r0FsqQGjOUEcZP8',
+      },
+    },    
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
