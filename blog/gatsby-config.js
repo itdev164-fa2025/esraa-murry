@@ -7,7 +7,11 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
- module.exports = {
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+module.exports = {
   siteMetadata: {
     title: `Gatsby Blog`,
     description: ``,
@@ -16,17 +20,18 @@
     contact: {
       name: `Esraa Murry`,
       company: `Blogs Inc.`,
-      address: `PO Box 1234`
-    }
+      address: `PO Box 1234`,
+    },
   },
   plugins: [
+    `gatsby-transformer-remark`,
     {
-      resolve: 'gatsby-source-contentful',
+      resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: 'mb545k59khby',
-        accessToken: 'Yr2wKSmpwNVesJ5t1-hOCg16jvG7r0FsqQGjOUEcZP8',
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
-    },    
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -52,4 +57,4 @@
       },
     },
   ],
-}
+};
